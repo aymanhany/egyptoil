@@ -5,7 +5,7 @@ import {
     Route,
     Link,
     useParams
-  } from "react-router-dom";
+} from "react-router-dom";
 
 
 import axios from 'axios'
@@ -20,6 +20,7 @@ import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import SwiperArrows from '../SwiperArrows';
+import ViewMore from '../ViewMore';
 
 SwiperCore.use([Navigation]);
 
@@ -41,7 +42,7 @@ function FeaturesToday() {
             <section className="features-today">
                 <div className="container">
                     <div className="title-section">
-                        <h1><span>Featurs</span></h1>
+                        <h1><span><Link to="archive/features">Features</Link></span></h1>
                         <SwiperArrows color="#000" prev={featuresPrevRef} next={featuresNextvRef} />
                     </div>
                     <div className="features-today-box owl-wrapper">
@@ -75,7 +76,11 @@ function FeaturesToday() {
                                         </div>
                                     </SwiperSlide>
                                 ))
+
                             }
+                            <SwiperSlide>
+                                <ViewMore type="features" />
+                            </SwiperSlide>
                         </Swiper>
                     </div>
                 </div>

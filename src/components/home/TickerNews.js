@@ -1,31 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-import Ticker from 'react-ticker'
+import { Link } from 'react-router-dom'
 
-import renderHTML from 'react-render-html';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { EffectFade } from 'swiper';
 
+import 'swiper/swiper.scss';
 
-const GetRatesFromAPI = () => {
-    const [tickerData, setTickerData] = useState([]);
+SwiperCore.use([EffectFade]);
+// Import Swiper styles
 
-    useEffect(() => {
-        async function fetchData() {
-            const resft = await axios.get('https://egyptoil-gas.com/wp-json/wp/v2/features?per_page=2');
-            setTickerData(resft.data);
-        }
-        fetchData();
-
-    }, [])
-
-    // A placeholder is needed, to tell react-ticker, that width and height might have changed
-    // It uses MutationObserver internally
-    return  (
-        <p>{tickerData !== " " ? tickerData.map(post => post.title.rendered) : 'loading...' }</p>
-    )
-};
 
 function TickerNews() {
+
+    const [tickerData, setTickerData] = useState([]);
+
+    useEffect(async () => {
+        const resft = await axios.get('https://egyptoil-gas.com/wp-json/wp/v2/news?per_page=5');
+        setTickerData(resft.data);
+
+    }, [])
 
     return (
         <div>
@@ -37,9 +33,21 @@ function TickerNews() {
                         <span className="breaking-news">breaking news</span>
                         <span className="new-news">New</span>
                         <div className="ticker-content">
-                            <Ticker offset="run-in" speed={10}>
-                                {() => <GetRatesFromAPI />}
-                            </Ticker>
+                            <Swiper
+                                slidesPerView={1}
+                                autoplay={
+                                    {delay: 3000}
+                                }
+                                speed={1500}
+                            >
+                                {
+                                    tickerData ?
+                                        tickerData.map(post => (
+                                            <SwiperSlide key={post.id}><Link to={`/single/news/${post.id}`}>{post.title.rendered}</Link></SwiperSlide>
+                                        ))
+                                        : 'loading..'
+                                }
+                            </Swiper>
                         </div>
                     </div>
                 </div>
