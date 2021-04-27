@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import Single from './components/Single';
+import Archive from './components/Archive';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/single/:type/:id" component={Single} />
+          <Route path="/archive/:type" component={Archive} />
         </Switch>
       </BrowserRouter>
       <Footer />
