@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import Moment from 'react-moment';
 import 'moment-timezone';
 
@@ -16,11 +18,8 @@ import SideBar from '../SideBar';
 
 SwiperCore.use([Navigation]);
 
-
-
 function TwoBoxes() {
-
-
+    
     const [news, setNews] = useState([]);
     const [events, setEvents] = useState([])
     const [reports, setReports] = useState([])
@@ -83,7 +82,7 @@ function TwoBoxes() {
                                 {/* carousel box */}
                                 <div className="carousel-box owl-wrapper">
                                     <div className="title-section">
-                                        <h1><span>Publications</span></h1>
+                                        <h1><span><Link to="archive/publications">Publications</Link></span></h1>
                                         <SwiperArrows color="#000" prev={galleryPrev} next={galleryNext} />
                                     </div>
                                     <Swiper
@@ -102,7 +101,7 @@ function TwoBoxes() {
                                                     <div className="item news-post image-post3">
                                                         <img src={post.featured_media_src_url} alt={post.title.rendered} height="200" />
                                                         <div className="hover-box">
-                                                            <h2><a href="single-post.html">{post.title.rendered}</a></h2>
+                                                            <h2><Link to={`/single/publications/${post.id}`}>{post.title.rendered}</Link></h2>
                                                             <ul className="post-tags">
                                                                 <li><i className="fa fa-clock-o" /><Moment format="YYYY/MM/DD">{post.title.date}</Moment></li>
                                                             </ul>
@@ -120,7 +119,7 @@ function TwoBoxes() {
                                     <div className="row">
                                         <div className="col-md-12">
                                             <div className="title-section">
-                                                <h1><span className="reports">reports</span></h1>
+                                                <h1><span className="reports"><Link to="archive/reports">Reports</Link></span></h1>
                                                 <SwiperArrows color="#000" prev={reportsPrev} next={reportsext} />
                                             </div>
                                             <div className="image-post-slider">
@@ -142,7 +141,7 @@ function TwoBoxes() {
                                                                         <div className="item news-post image-post3">
                                                                             <img src={post.featured_media_src_url} alt={post.title.rendered} height="200" />
                                                                             <div className="hover-box">
-                                                                                <h2><a href="single-post.html">{post.title.rendered}</a></h2>
+                                                                                <h2><Link to={`/single/reports/${post.id}`}>{post.title.rendered}</Link></h2>
                                                                                 <ul className="post-tags">
                                                                                     <li><i className="fa fa-clock-o" /><Moment format="YYYY/MM/DD">{post.title.date}</Moment></li>
                                                                                 </ul>
@@ -158,7 +157,7 @@ function TwoBoxes() {
                                         </div>
                                         <div className="col-md-12">
                                             <div className="title-section">
-                                                <h1><span className="world">Events Coverage</span></h1>
+                                                <h1><span className="world"><Link to="archive/events_coverage">Events</Link></span></h1>
                                             </div>
                                             <div className="owl-wrapper">
                                                 <Swiper
@@ -180,7 +179,7 @@ function TwoBoxes() {
                                                                             <li key={post.id}>
                                                                                 <img src={post.featured_media_src_url} alt={post.title.rendered} />
                                                                                 <div className="post-content">
-                                                                                    <h2><a href="single-post.html">{post.title.rendered}</a></h2>
+                                                                                    <h2><Link to={`/single/events_coverage/${post.id}`}>{post.title.rendered}</Link></h2>
                                                                                     <ul className="post-tags">
                                                                                         <li><i className="fa fa-clock-o" /><Moment format="YYYY/MM/DD">{post.date}</Moment></li>
                                                                                     </ul>
@@ -198,22 +197,6 @@ function TwoBoxes() {
                                     </div>
                                 </div>
                                 {/* End grid box */}
-                                {/* google addsense */}
-                                <div className="advertisement">
-                                    <div className="desktop-advert">
-                                        <span>Advertisement</span>
-                                        <img src="../../upload/addsense/728x90-white.jpg" alt="" />
-                                    </div>
-                                    <div className="tablet-advert">
-                                        <span>Advertisement</span>
-                                        <img src="../../upload/addsense/468x60-white.jpg" alt="" />
-                                    </div>
-                                    <div className="mobile-advert">
-                                        <span>Advertisement</span>
-                                        <img src="../../upload/addsense/300x250.jpg" alt="" />
-                                    </div>
-                                </div>
-                                {/* End google addsense */}
                             </div>
                             {/* End block content */}
                         </div>

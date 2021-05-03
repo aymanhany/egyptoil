@@ -41,7 +41,7 @@ function FeaturedVideo() {
                             {
                                 videos ?
                                     videos.map(post => (
-                                        <div className="item news-post video-post">
+                                        <div className="item news-post video-post" key={post.id}>
                                             <img src={post.featured_media_src_url} alt={post.title.rendered} />
                                             <a target="_blank" href={post.acf.video} className="video-link"><i className="fa fa-play-circle-o" /></a>
                                             <div className="hover-box">

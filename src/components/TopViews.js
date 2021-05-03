@@ -20,7 +20,7 @@ function TopViews() {
     const [topReviews, setTopReviews] = useState([]);
 
     useEffect(async () => {
-        const res = await axios.get('https://egyptoil-gas.com/wp-json/wordpress-popular-posts/v1/popular-post');
+        const res = await axios.get('https://egyptoil-gas.com/wp-json/wordpress-popular-posts/v1/popular-posts?post_type=news');
         setTopReviews(res.data);
     }, [])
 
@@ -34,7 +34,7 @@ function TopViews() {
                             {
                                 topReviews ?
                                     topReviews.map(post => (
-                                        <li>
+                                        <li key={post.id}>
                                             <img src={post.featured_media_src_url} alt="" />
                                             <div className="post-content">
                                                 <h2><Link to={`/single/news/${post.id}`}>{post.title.rendered.substring(0, 50)}</Link></h2>

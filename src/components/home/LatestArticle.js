@@ -35,7 +35,7 @@ function LatestArticle() {
                             {/* block content */}
                             <div className="block-content latest-news">
                                 <div className="title-section">
-                                    <h1><span>Latest Articles</span></h1>
+                                    <h1><span><Link to="archive/news">Latest News</Link></span></h1>
                                 </div>
                                 {/* masonry box */}
                                 <div className="row">

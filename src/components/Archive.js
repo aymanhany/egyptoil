@@ -39,7 +39,7 @@ function Archive({ match }) {
                                                     <img src={post.featured_media_src_url} alt={post.title.rendered} height="200" />
                                                 </div>
                                                 <div className="post-title">
-                                                    <h2><Link to={`/single/news/${post.id}`}>{post.title.rendered}</Link></h2>
+                                                    <h2><Link to={`/single/${match.params.type}/${post.id}`}>{post.title.rendered}</Link></h2>
                                                     <ul className="post-tags">
                                                         <li><i className="fa fa-clock-o" /><Moment format="YYYY/MM/DD">{post.title.date}</Moment></li>
                                                     </ul>
@@ -55,6 +55,7 @@ function Archive({ match }) {
                     <div className="col-sm-4">
                         {/* sidebar */}
                         <SideBar />
+                        <TopViews />
                         {/* End sidebar */}
                     </div>
                 </div>

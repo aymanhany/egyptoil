@@ -49,6 +49,20 @@ function FeaturesToday() {
                         <Swiper
                             slidesPerView={4}
                             spaceBetween={15}
+                            breakpoints={{
+                                480: {
+                                    "slidesPerView": 1,
+                                    "spaceBetween": 20
+                                },
+                                768: {
+                                    "slidesPerView": 2,
+                                    "spaceBetween": 20
+                                },
+                                1024: {
+                                    "slidesPerView": 4,
+                                    "spaceBetween": 20
+                                }
+                            }}
                             onInit={(swiper) => {
                                 swiper.params.navigation.prevEl = featuresPrevRef.current;
                                 swiper.params.navigation.nextEl = featuresNextvRef.current;
